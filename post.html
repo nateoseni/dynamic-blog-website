@@ -12,6 +12,7 @@
         <h1 id="displayTitle"></h1>
         <p id="displayContent"></p>
         <button id="editButton">Edit Post</button>
+        <button id="deleteButton">Delete Post</button>
     </div>
 
     <form id="editForm" style = "display:none;">
@@ -32,6 +33,7 @@
         const editForm = document.getElementById("editForm");
         const editButton = document.getElementById("editButton");
         const postView = document.getElementById("postView");
+        const deleteButton = document.getElementById("deleteButton");
 
         if(editButton) {
             editButton.addEventListener("click", function() {
@@ -56,6 +58,15 @@
                 } else {
                     alert("Post not found");
                 }        
+            });
+        }
+
+        if(deleteButton) {
+            deleteButton.addEventListener("click", function() {
+                const posts = getPosts();
+                const updatedPosts = posts.filter(post => post.id != postId);
+                localStorage.setItem("posts", JSON.stringify(updatedPosts));
+                window.location.href = "index.html";
             });
         }
         </script>
