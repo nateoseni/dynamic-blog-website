@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View and Edit Posts</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <div id="postView">
+        <h1 id="displayTitle"></h1>
+        <p id="displayContent"></p>
+        <button id="editButton">Edit Post</button>
+    </div>
+
+    <form id="editForm" style = "display:none;">
+        <h2>Edit Your Post</h2>
+        <label for="editTitle">Title:</label><br>
+        <input type="text" id="editTitle" name="editTitle" required><br><br>
+        <label for="editContent">Content:</label><br>
+        <textarea id="editContent" name="editContent" rows="10" cols="50" required></textarea><br><br>
+        <button type="submit">Submit</button>
+    </form>
+
+
+    <script src="script.js"></script>
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const postId = urlParams.get("id");
+
+        const editForm = document.getElementById("editForm");
+        const editButton = document.getElementById("editButton");
+        const postView = document.getElementById("postView");
+
+        if(editButton) {
+            editButton.addEventListener("click", function() {
+                postView.style.display = "none";
+                editForm.style.display = "block";
+            });
+        }
+
+        if(editForm) {
+            editForm.addEventListener("submit", function(event) {
+                event.preventDefault();
+
+                const posts = getPosts();
+                const postIndex = posts.findIndex(post => post.id === parseInt(postId));
+
+                if (postIndex !== -1) {
+                    posts[postIndex].title = document.getElementById("editTitle").value.trim();
+                    posts[postIndex].content = document.getElementById("editContent").value.trim();
+
+                    localStorage.setItem("posts", JSON.stringify(posts));
+                    window.location.href = "index.html";
+                } else {
+                    alert("Post not found");
+                }        
+            });
+        }
+        </script>
+</body>
+</html>
