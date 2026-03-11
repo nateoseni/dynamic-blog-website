@@ -3,11 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My dynamic blog</title>
+    <title>Create Posts</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <h1>Create a New Post</h1>
-    <form id="post-form">
+    <form id="postForm">
         <label for="title">Title:</label><br>
         <input type="text" id="title" name="title" required><br><br>
         <label for="content">Content:</label><br>
@@ -34,7 +35,7 @@
         }
         const posts = getPosts();
         posts.push(newPost);
-        savePosts(posts);
+        localStorage.setItem("posts", JSON.stringify(posts));
 
         window.location.href = "index.html";
     });
