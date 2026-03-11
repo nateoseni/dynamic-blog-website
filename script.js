@@ -9,10 +9,12 @@ function renderPosts() {
     postsContainer.innerHTML = "";
     posts.forEach(post => {
         const postElement = document.createElement("div");
+        const postDate = new Date(post.id).toLocaleDateString();
         postElement.classList.add("post");
         postElement.innerHTML = `
             <h2>${post.title}</h2>
             <p>${post.content}</p>
+            <small>Published on: ${postDate}</small>
             <a href="post.html?id=${post.id}">Read More</a>
         `;
         postsContainer.appendChild(postElement);
