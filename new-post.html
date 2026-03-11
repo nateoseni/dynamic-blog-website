@@ -34,7 +34,7 @@
         }
         const posts = getPosts();
         posts.push(newPost);
-        savePosts(posts);
+        localStorage.setItem("posts", JSON.stringify(posts));
 
         window.location.href = "index.html";
     });
