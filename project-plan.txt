@@ -1,0 +1,13 @@
+Project Plan:
+There are 3 main pages for this project: index.html, new-post.html, and post.html
+Along with the 3 main pages, there is a script.js file to assist with functions used in all 3 main pages.
+
+On the index page, we will have what the user 1st sees upon entering the website: The header, a button to make a new post, and an area for a listing of blog posts that have been created by users.
+
+On the new-post page, the button from index.html will guide users here, and from there they are able to create a title for their post, and write the content of the post. This data is stored locally
+and the user will return to the index page upon submission
+
+On the post page, There are buttons to edit posts, delete posts, and view posts. These buttons take you to a page to confirm an edit or deletion. If user wants to edit, the user will be taken 
+to a page to once again write a title and content, and returned to the index upon submission. Upon clicking the delete button, user is brought back to index page and will see the post has been removed.
+
+I added styling using css, and overall quality of life changes throughout the project.
